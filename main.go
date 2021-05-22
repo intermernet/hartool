@@ -12,7 +12,6 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"io/fs"
 	"io/ioutil"
 	"net/url"
 	"os"
@@ -53,7 +52,7 @@ func main() {
 		}
 		p := filepath.FromSlash(u.Hostname() + u.EscapedPath())
 		d := filepath.Dir(p)
-		if err = os.MkdirAll(d, fs.ModePerm); err != nil {
+		if err = os.MkdirAll(d, os.ModePerm); err != nil {
 			fmt.Println(fmt.Errorf("could not create directory %s: %v", d, err))
 			continue
 		}
