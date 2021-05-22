@@ -16,7 +16,6 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 func main() {
@@ -25,7 +24,7 @@ func main() {
 		os.Exit(1)
 	}
 	fname := os.Args[1]
-	if !strings.HasSuffix(fname, ".har") {
+	if filepath.Ext(fname) != ".har" {
 		fmt.Println(fmt.Errorf("must specify an .HAR file"))
 		os.Exit(1)
 	}
